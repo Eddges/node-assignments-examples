@@ -1,9 +1,18 @@
 const rect = require('./rectangle')
 
+const solveRect = (l, b) => {
+    console.log('Solving')
 
-
-const rectFunction = (l,b) => {
-    console.log(`Area of the rectangle is ${rect.area(l,b)}`)
+    rect(l, b, (err, funcs) => {
+        if(err){
+            console.log(err.message)
+        }
+        else{
+            console.log('Area : ' + funcs.area())
+        }
+    })
 }
 
-rectFunction(6,10)
+
+solveRect(4, 5)
+solveRect(8, -1)
