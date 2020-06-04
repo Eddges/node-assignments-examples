@@ -1,11 +1,9 @@
-const rect = {
-    area : (x,y) => {
-        return (x*y)
-    },
-}
+const rect = require('./rectangle')
+
+
 
 const rectFunction = (l,b) => {
     console.log(`Area of the rectangle is ${rect.area(l,b)}`)
 }
 
-rectFunction(5,10)
+rectFunction(6,10)
