@@ -4,6 +4,7 @@ const fs = require('fs')
 const http = require('http')
 const morgan = require('morgan')
 const bodyParser = require('body-parser')
+const dishRouter = require('./router/dishes')
 
 const PORT = 5000;
 const hostname = 'localhost';
@@ -16,28 +17,7 @@ app.use(morgan('dev'));
 
 
 
-app.all('/dishes', (req, res, next) => {
-    res.statusCode = 200;
-    res.setHeader('Content-Type', 'text/plain');
-    next();
-})
-
-app.get('/dishes', (req, res, next) => {
-    res.end('Sending the dishes');
-})
-
-app.post('/dishes', (req, res, next) => {
-    res.end('Adding the dish : ' + req.body.name + ' with details : ' + req.body.description)
-})
-
-app.put('/dishes', (req, res, next) => {
-    res.statusCode = 403;
-    res.end('Put operation not supported on /dishes')
-})
-
-app.delete('/dishes', (req, res, next) => {
-    res.end('Deleting the entries from /dishes')
-})
+app.use('/dishes', dishRouter)
 
 
 app.get('/dishes/:dishId', (req, res, next) => {
